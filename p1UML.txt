@@ -1,0 +1,27 @@
+Project1Phase1Soln
+	Launch
+		Main
+	user
+		Client.java
+			-account: Account
+		Account.java
+			-email: String
+			-billingAdress: String
+			-firstName: String
+			-lastName: String
+			----------------------------------------------------------------------------------------------------------------------------------
+			+Account(email: String, billingAdress: String, firstName: String, lastName: String)
+			+Account(email: String)
+			+setFirstName(firstName: String): void
+			+setLastName(lastName: String): void
+			+setBillingAdress(adress: String): void
+			+getFirstName(firstName: String): String
+			+getLastName(lastName: String): String
+			+getBillingAdress(adress: String): String
+			+updateInformation(billingAdress: String, firstName: String, lastName: String): void
+			-------------------------------------------------------------------------------------------------------------------------------------
+		Administrator.java
+	itinerary
+		Itinerary
+	ui
+		Ui
