@@ -33,8 +33,8 @@ Project1Phase1Soln
 			+updateClientPersonalInformation(client: Client, firstName: String, lastName: String, billingAdress: String): void
 			+hashCode(): int
 			---------------------------------------------------------------------------------------------------------------------------------------
-	itinerary
-		Itinerary
+	flights
+		Flight
 			--------------------------------------------------------------------------------------------------------------------------------------
 			-flightNumber: int
 			-departureDate: Date
@@ -45,7 +45,17 @@ Project1Phase1Soln
 			-origin: String
 			-destination: String
 			--------------------------------------------------------------------------------------------------------------------------------------
-			+Itinerary(flightNumber: int, departureDate: Date, departureTime: Time, arrivalDate: Date, arrivalTime: Time, airline: String, origin: String, destination: String)
+			+Flight(flightNumber: int, departureDate: Date, departureTime: Time, arrivalDate: Date, arrivalTime: Time, airline: String, origin: String, destination: String)
+			--------------------------------------------------------------------------------------------------------------------------------------
+		Itinerary
+			--------------------------------------------------------------------------------------------------------------------------------------
+			-flights: ArrayList<Flight>
+			--------------------------------------------------------------------------------------------------------------------------------------
+			+Itinerary(flights: ArrayList<Flight>
+			+addFlight(flight: Flight): void
+			+QueryDepartureDate(departureDate: Date): ArrayList<Flight>
+			+QueryOrigin(origin: String): ArrayList<Flight>
+			+QueryDestination(destination: String): ArrayList<Flight>
 			--------------------------------------------------------------------------------------------------------------------------------------
 	ui
 		Ui
