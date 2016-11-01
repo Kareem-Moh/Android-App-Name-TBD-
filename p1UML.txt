@@ -2,15 +2,17 @@ Project1Phase1Soln
 	Launch
 		Main
 	user
-		Client.java
+		Client.java extends Account
 			-account: Account
-		Account.java
+			----------------------------------------------------------------------------------------------------------------------------------
+			+Client(email: String, billingAdress: String, firstName: String, lastName: String)
+		Account.java <<abstract>>
 			-email: String
 			-billingAdress: String
 			-firstName: String
 			-lastName: String
-			----------------------------------------------------------------------------------------------------------------------------------
-			+Account(email: String, billingAdress: String, firstName: String, lastName: String)
+			-random: Random
+			------------------------------------------------------------------------------------------------------------------------------
 			+Account(email: String)
 			+setFirstName(firstName: String): void
 			+setLastName(lastName: String): void
@@ -19,8 +21,14 @@ Project1Phase1Soln
 			+getLastName(lastName: String): String
 			+getBillingAdress(adress: String): String
 			+updateInformation(billingAdress: String, firstName: String, lastName: String): void
+			+hashCode(): int
 			-------------------------------------------------------------------------------------------------------------------------------------
-		Administrator.java
+		Administrator.java extends Account
+			-account: Account
+			--------------------------------------------------------------------------------------------------------------------------------------
+			+Administrator(email: String, billingAdress: String, firstName: String, lastName: String)
+			+updateClientFirstName(firstName: String): void
+			
 	itinerary
 		Itinerary
 	ui
