@@ -4,6 +4,7 @@ Project1Phase1Soln
 	user
 		Client.java extends Account
 			--------------------------------------------------------------------------------------------------------------------------------------
+			-bookedFlights: ArrayList<Itenary>
 			--------------------------------------------------------------------------------------------------------------------------------------
 			+Client(email: String, billingAdress: String, firstName: String, lastName: String)
 			+hashCode(): int
@@ -22,7 +23,7 @@ Project1Phase1Soln
 			+getFirstName(firstName: String): String
 			+getLastName(lastName: String): String
 			+getBillingAdress(adress: String): String
-			+updateInformation(firstName: String, lastName: String, billingAdress: String)
+			+updateInformation(firstName: String, lastName: String, billingAdress: String)	
 			+hashCode(): int
 			--------------------------------------------------------------------------------------------------------------------------------------
 		Administrator.java extends Account
@@ -51,14 +52,41 @@ Project1Phase1Soln
 		Itinerary
 			--------------------------------------------------------------------------------------------------------------------------------------
 			-flights: ArrayList<Flight>
+			-totalCost: double
+			-totalFlightTime: Time
 			--------------------------------------------------------------------------------------------------------------------------------------
 			+Itinerary(flights: ArrayList<Flight>
 			+addFlight(flight: Flight): void
-			+QueryDepartureDate(departureDate: Date): ArrayList<Flight>
-			+QueryOrigin(origin: String): ArrayList<Flight>
-			+QueryDestination(destination: String): ArrayList<Flight>
 			+getTotalCost(): double
 			+getTotatTravelTime(): Time
+			-updateTotalTime(): void
+			-updateTotalCost(): void
+			+equalsTo(): Integer
 			--------------------------------------------------------------------------------------------------------------------------------------
+	Databases	
+		IternaryDatabase	
+			--------------------------------------------------------------------------------------------------------------------------------------
+			-listOfIternaries: ArrayList<Iternary>
+			--------------------------------------------------------------------------------------------------------------------------------------
+			+IternaryDatabase()
+			+IternaryDatabase(listOfIternaries: ArrayList<Iternary>)
+			+addItenerary() : boolean 
+			+bookItenerary(Client client, Itenerary iter) : boolean 
+			+updateDatabaseOfItenaries() : void
+			+getListOfIterneraries() : ArrayList<Iternrary>
+			+queryItenerary(departureData: Date, origin:String, destination: String, boolean sortByTime, boolean sortByCost) : ArrayList<Itinerary>
+			--------------------------------------------------------------------------------------------------------------------------------------
+		AccountDatabase	
+			--------------------------------------------------------------------------------------------------------------------------------------
+			-listOfAccounts: ArrayList<Account>
+			--------------------------------------------------------------------------------------------------------------------------------------
+			+AccountDatabase() 
+			+addAccount(Client) : bool
+			+updateDatabaseOfAccount() : void
+			+QueryClient(email: String): ArrayList<Client>
+			--------------------------------------------------------------------------------------------------------------------------------------
+
+
+
 	ui
 		Ui
