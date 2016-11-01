@@ -4,10 +4,14 @@ Project1Phase1Soln
 	user
 		Client.java extends Account
 			--------------------------------------------------------------------------------------------------------------------------------------
-			-bookedFlights: ArrayList<Itenary>
+			-bookedTrips: ArrayList<Itenary>
 			--------------------------------------------------------------------------------------------------------------------------------------
 			+Client(email: String, billingAdress: String, firstName: String, lastName: String)
 			+hashCode(): int
+			+getFlightTrips(String origin, String destination,Date departureDate,Time departureTime): ArrayList<Iternary>
+			+selectItenerary(): Itinerary
+			+bookTrip(): void
+			+viewBookedTrips(): ArrayList<Itenary>
 			--------------------------------------------------------------------------------------------------------------------------------------
 		Account.java <<abstract>>
 			--------------------------------------------------------------------------------------------------------------------------------------
