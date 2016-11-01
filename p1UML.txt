@@ -10,7 +10,7 @@ Project1Phase1Soln
 			--------------------------------------------------------------------------------------------------------------------------------------
 		Account.java <<abstract>>
 			--------------------------------------------------------------------------------------------------------------------------------------
-			-email: String
+			#email: String
 			-billingAdress: String
 			-firstName: String
 			-lastName: String
@@ -35,5 +35,17 @@ Project1Phase1Soln
 			---------------------------------------------------------------------------------------------------------------------------------------
 	itinerary
 		Itinerary
+			--------------------------------------------------------------------------------------------------------------------------------------
+			-flightNumber: int
+			-departureDate: Date
+			-departureTime: Time
+			-arrivalDate: Date
+			-arrivalTime: Time
+			-airline: String
+			-origin: String
+			-destination: String
+			--------------------------------------------------------------------------------------------------------------------------------------
+			+Itinerary(flightNumber: int, departureDate: Date, departureTime: Time, arrivalDate: Date, arrivalTime: Time, airline: String, origin: String, destination: String)
+			--------------------------------------------------------------------------------------------------------------------------------------
 	ui
 		Ui
