@@ -44,8 +44,9 @@ Project1Phase1Soln
 			-airline: String
 			-origin: String
 			-destination: String
+			-cost: double
 			--------------------------------------------------------------------------------------------------------------------------------------
-			+Flight(flightNumber: int, departureDate: Date, departureTime: Time, arrivalDate: Date, arrivalTime: Time, airline: String, origin: String, destination: String)
+			+Flight(flightNumber: int, departureDate: Date, departureTime: Time, arrivalDate: Date, arrivalTime: Time, airline: String, origin: String, destination: String, cost: double)
 			--------------------------------------------------------------------------------------------------------------------------------------
 		Itinerary
 			--------------------------------------------------------------------------------------------------------------------------------------
@@ -56,6 +57,8 @@ Project1Phase1Soln
 			+QueryDepartureDate(departureDate: Date): ArrayList<Flight>
 			+QueryOrigin(origin: String): ArrayList<Flight>
 			+QueryDestination(destination: String): ArrayList<Flight>
+			+getTotalCost(): double
+			+getTotatTravelTime(): Time
 			--------------------------------------------------------------------------------------------------------------------------------------
 	ui
 		Ui
