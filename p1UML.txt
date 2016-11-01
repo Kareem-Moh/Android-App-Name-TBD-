@@ -3,32 +3,36 @@ Project1Phase1Soln
 		Main
 	user
 		Client.java extends Account
-			-account: Account
-			----------------------------------------------------------------------------------------------------------------------------------
+			--------------------------------------------------------------------------------------------------------------------------------------
+			--------------------------------------------------------------------------------------------------------------------------------------
 			+Client(email: String, billingAdress: String, firstName: String, lastName: String)
+			+hashCode(): int
+			--------------------------------------------------------------------------------------------------------------------------------------
 		Account.java <<abstract>>
+			--------------------------------------------------------------------------------------------------------------------------------------
 			-email: String
 			-billingAdress: String
 			-firstName: String
 			-lastName: String
-			-random: Random
-			------------------------------------------------------------------------------------------------------------------------------
-			+Account(email: String)
+			--------------------------------------------------------------------------------------------------------------------------------------
 			+setFirstName(firstName: String): void
 			+setLastName(lastName: String): void
 			+setBillingAdress(adress: String): void
+			+getEmail(): String
 			+getFirstName(firstName: String): String
 			+getLastName(lastName: String): String
 			+getBillingAdress(adress: String): String
-			+updateInformation(billingAdress: String, firstName: String, lastName: String): void
+			+updateInformation(firstName: String, lastName: String, billingAdress: String)
 			+hashCode(): int
-			-------------------------------------------------------------------------------------------------------------------------------------
+			--------------------------------------------------------------------------------------------------------------------------------------
 		Administrator.java extends Account
-			-account: Account
+			--------------------------------------------------------------------------------------------------------------------------------------
 			--------------------------------------------------------------------------------------------------------------------------------------
 			+Administrator(email: String, billingAdress: String, firstName: String, lastName: String)
-			+updateClientFirstName(firstName: String): void
-			
+			+updateClientEmail(client: Client, email: String): void
+			+updateClientPersonalInformation(client: Client, firstName: String, lastName: String, billingAdress: String): void
+			+hashCode(): int
+			---------------------------------------------------------------------------------------------------------------------------------------
 	itinerary
 		Itinerary
 	ui
