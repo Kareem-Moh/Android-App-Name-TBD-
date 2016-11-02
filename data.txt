@@ -1,4 +1,4 @@
-We will store all our information related to flights and account info in two 
+We will store all our information related to flights and account info in three 
 seperate CSV(Comma Seperated Value) files, flights.csv , clients.csv and 
 admins.csv. We will now go over the format for each entry in the file. 
 We expect to sanatize client input from any commas, and to follow the formats 
