@@ -1,5 +1,49 @@
-We will store all our information related to flights and account info in two seperate CSV(Comma Seperated Value) files, flights.csv and accounts.csv.
-We will use this format and restrict data entries that are to be uploaded to the database to not have commas, as this will bring up parsing ambiguities otherwise.
+We will store all our information related to flights and account info in two 
+seperate CSV(Comma Seperated Value) files, flights.csv , clients.csv and 
+admins.csv. We will now go over the format for each entry in the file. 
+We expect to sanatize client input from any commas, and to follow the formats 
+below. This is so that that when we are generating our respective client and 
+flight database there are no ambigitues/parsing errors.
 
-We will store all the information in a CSV (Comma Seperated Value) file. We will have a CSV file for the Clients/Accounts in our Database.
-We will also have a CSV file for the flights in our database.  We expect to sanatize client input from any commas, so that when we are generating  our respective client and flight database there are no ambigitues/parsing errors.
+flights.csv
+==
+Each entry in flights.csv will be of the following format: 
+- flightNumber: integer,  i.e. "100"
+- departureDate: String, with the format YYYY/MM/DD  i.e. "2016/11/03"
+- departureTime: String, with the format HH:MM where 
+                 HH is 01 <= HH <= 24 and 00 <= MM <= 59 i.e. "23:59"
+- arrivalDate: String, with the format YYYY/MM/DD  i.e. "2016/11/03"
+- arrivalTime: String, with the format HH:MM where 
+               HH is 01 <= HH <= 24 and 00 <= MM <= 59 i.e. "23:59"
+- airline: String,  i.e. "Lacsa"
+- origin: String, in the format  COUNTRY/CITY like "Ontario/Toronto"
+- destination: String, in the format  COUNTRY/CITY like "Ontario/Toronto"
+- cost: double, a double with two degrees of precision "54.60"
+
+clients.csv
+====
+Each entry in accounts.csv will be of the following format:
+#email: String , with the format "username@server" like "client@gmail.com"
+-billingAdress: String, with the one of the following format: 
+                "unitnumber/streetnumber/streetname/city/country" 
+                or "streetnumber/streetname/city/country"
+-firstName: String, any format like "John", with only alpha-numeric characters
+-lastName: String, any format like "Doe", with only alpha-numeric characters
+
+
+clients.csv
+====
+Each entry in accounts.csv will be of the following format:
+#email: String , with the format "username@server" like "client@gmail.com"
+-billingAdress: String, with the one of the following format: 
+                "unitnumber/streetnumber/streetname/city/country" 
+                or "streetnumber/streetname/city/country" or an empty string
+-firstName: String, any format like "John", with only alpha-numeric characters
+-lastName: String, any format like "Doe", with only alpha-numeric characters
+
+admins.csv
+====
+Each entry in accounts.csv will be of the following format:
+#email: String , with the format "username@server" like "client@gmail.com"
+-firstName: String, any format like "John", with only alpha-numeric characters
+-lastName: String, any format like "Doe", with only alpha-numeric characters
