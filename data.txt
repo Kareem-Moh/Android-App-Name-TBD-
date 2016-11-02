@@ -1,0 +1,5 @@
+We will store all our information related to flights and account info in two seperate CSV(Comma Seperated Value) files, flights.csv and accounts.csv.
+We will use this format and restrict data entries that are to be uploaded to the database to not have commas, as this will bring up parsing ambiguities otherwise.
+
+We will store all the information in a CSV (Comma Seperated Value) file. We will have a CSV file for the Clients/Accounts in our Database.
+We will also have a CSV file for the flights in our database.  We expect to sanatize client input from any commas, so that when we are generating  our respective client and flight database there are no ambigitues/parsing errors.
