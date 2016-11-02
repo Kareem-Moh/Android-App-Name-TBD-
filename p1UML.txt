@@ -36,6 +36,10 @@ Project1Phase1Soln
 			+Administrator(email: String, billingAdress: String, firstName: String, lastName: String)
 			+updateClientEmail(client: Client, email: String): void
 			+updateClientPersonalInformation(client: Client, firstName: String, lastName: String, billingAdress: String): void
+			+viewClients(): ArrayList<Client>
+			+selectClient(): Client
+			+addFlight(flight: Flight): void
+			+uploadFlights(path: String): void
 			+hashCode(): int
 			---------------------------------------------------------------------------------------------------------------------------------------
 	flights
@@ -65,27 +69,25 @@ Project1Phase1Soln
 			+getTotatTravelTime(): Time
 			-updateTotalTime(): void
 			-updateTotalCost(): void
-			+equalsTo(): Integer
 			--------------------------------------------------------------------------------------------------------------------------------------
-	Databases	
-		IternaryDatabase	
+	Databases
+		FlightDatabase
 			--------------------------------------------------------------------------------------------------------------------------------------
-			-listOfIternaries: ArrayList<Iternary>
+			-listOfFlights: ArrayList<Flight>
 			--------------------------------------------------------------------------------------------------------------------------------------
-			+IternaryDatabase()
-			+IternaryDatabase(listOfIternaries: ArrayList<Iternary>)
-			+addItenerary() : boolean 
-			+bookItenerary(Client client, Itenerary iter) : boolean 
+			+FlightDatabase(path: String)
+			+addFlight(Flight) : void
+			+bookItenerary(client: , itinerary: Itinerary) : void
 			+updateDatabaseOfItenaries() : void
 			+getListOfIterneraries() : ArrayList<Iternrary>
-			+queryItenerary(departureData: Date, origin:String, destination: String, boolean sortByTime, boolean sortByCost) : ArrayList<Itinerary>
+			+queryItenerary(departureDate: Date, origin: String, destination: String, boolean: sortByTime, boolean: sortByCost) : ArrayList<Itinerary>
 			--------------------------------------------------------------------------------------------------------------------------------------
-		AccountDatabase	
+		ClientDatabase
 			--------------------------------------------------------------------------------------------------------------------------------------
-			-listOfAccounts: ArrayList<Account>
+			-listOfClients: ArrayList<Client>
 			--------------------------------------------------------------------------------------------------------------------------------------
-			+AccountDatabase() 
-			+addAccount(Client) : bool
+			+ClientDatabase() 
+			+addClient(Client) : void
 			+updateDatabaseOfAccount() : void
 			+QueryClient(email: String): ArrayList<Client>
 			--------------------------------------------------------------------------------------------------------------------------------------
