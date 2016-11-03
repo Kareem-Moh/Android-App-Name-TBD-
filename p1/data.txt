@@ -30,17 +30,6 @@ Each entry in accounts.csv will be of the following format:
 -firstName: String, any format like "John", with only alpha-numeric characters
 -lastName: String, any format like "Doe", with only alpha-numeric characters
 
-
-clients.csv
-====
-Each entry in accounts.csv will be of the following format:
-#email: String , with the format "username@server" like "client@gmail.com"
--billingAdress: String, with the one of the following format: 
-                "unitnumber/streetnumber/streetname/city/country" 
-                or "streetnumber/streetname/city/country" or an empty string
--firstName: String, any format like "John", with only alpha-numeric characters
--lastName: String, any format like "Doe", with only alpha-numeric characters
-
 admins.csv
 ====
 Each entry in accounts.csv will be of the following format:
