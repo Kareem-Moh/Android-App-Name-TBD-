@@ -22,7 +22,7 @@ public class Driver {
    * given path.
    * @param path the path to an input csv file of client information with
    *     lines in the format: 
-   *     LastName,FirstNames,Email,Address,CreditCardNumber,ExpiryDate
+   *     LastName;FirstNames;Email;Address;CreditCardNumber;ExpiryDate
    *     The ExpiryDate is stored in the format yyyy-MM-dd.
    */
   public static void uploadClientInfo(String path) {
@@ -34,7 +34,7 @@ public class Driver {
    * given path.
    * @param path the path to an input csv file of flight information with 
    *     lines in the format: 
-   *     Number,DepartureDateTime,ArrivalDateTime,Airline,Origin,Destination,Price
+   *     Number;DepartureDateTime;ArrivalDateTime;Airline;Origin;Destination;Price
    *     The dates are in the format yyyy-MM-dd HH:mm; the price has exactly two
    *     decimal places.
    */
@@ -47,7 +47,7 @@ public class Driver {
    * @param email the email address of a client
    * @return the information stored for the client with the given email
    *     in this format:
-   *     LastName,FirstNames,Email,Address,CreditCardNumber,ExpiryDate
+   *     LastName;FirstNames;Email;Address;CreditCardNumber;ExpiryDate
    *     (the ExpiryDate is stored in the format yyyy-MM-dd)
    */
   public static String getClient(String email) {
@@ -77,7 +77,7 @@ public class Driver {
    * @param destination a flight destination
    * @return the flights that depart from origin and arrive at destination
    *     on the given date formatted in exactly this format:
-   *     Number,DepartureDateTime,ArrivalDateTime,Airline,Origin,Destination,Price
+   *     Number;DepartureDateTime;ArrivalDateTime;Airline;Origin;Destination;Price
    *     The dates are in the format yyyy-MM-dd HH:mm; the price has exactly two
    *     decimal places. 
    * @throws ParseException if date cannot be parsed
@@ -115,9 +115,10 @@ public class Driver {
    * @return itineraries that depart from origin and arrive at destination on the given date with
    *         valid layover. Each itinerary in the output should contain one line per flight, in the
    *         format: 
-   *         Number,DepartureDateTime,ArrivalDateTime,Airline,Origin,Destination
-   *         followed by total price (on its own line, exactly two decimal places), followed by
-   *         total duration (on its own line, measured in hours with 2 decimal places).
+   *         Number;DepartureDateTime;ArrivalDateTime;Airline;Origin;Destination
+   *         followed by total price (on its own line, exactly 2 decimal places),
+   *         followed by total duration (on its own line, measured in hours with 
+   *         exactly 2 decimal places).
    */
   public static List<String> getItineraries(String date, String origin, String destination) {
     // TODO: complete/rewrite this method body
