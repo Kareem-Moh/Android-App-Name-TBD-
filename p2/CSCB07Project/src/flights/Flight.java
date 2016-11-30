@@ -22,6 +22,8 @@ public class Flight {
   private String origin;
   private String destination;
   private double cost;
+  //New field for phase 3
+  private int numSeats;
 
   /**
    * Generic constructor which encapsulates all the necessities for a flight.
@@ -33,9 +35,10 @@ public class Flight {
    * @param origin is the city of origin.
    * @param destination is the city of destination.
    * @param cost is the cost of the flight.
+   * @param numSeats number of seats the flight has.
    */
   public Flight(String flightNumber, Date departureDateTime, Date arrivalDateTime, String airline,
-      String origin, String destination, double cost) {
+      String origin, String destination, double cost, int numSeats) {
     this.flightNumber = flightNumber;
     this.departureDateTime = departureDateTime;
     this.arrivalDateTime = arrivalDateTime;
@@ -43,6 +46,24 @@ public class Flight {
     this.origin = origin;
     this.destination = destination;
     this.cost = cost;
+    //New for phase 3
+    this.numSeats = numSeats;
+  }
+
+  /**
+   * Returns the number of seats remaining in the flight
+   * @return the numSeats
+   */
+  public int getNumSeats() {
+    return numSeats;
+  }
+
+  /**
+   * Set the number of remaining seats
+   * @param numSeats the numSeats to set
+   */
+  public void setNumSeats(int numSeats) {
+    this.numSeats = numSeats;
   }
 
   /**
@@ -156,6 +177,20 @@ public class Flight {
   public void setCost(double cost) {
     this.cost = cost;
   }
+  
+  /**
+   * decreases the number of remaining seats in accordance 
+   * to numPassengers.
+   * @param numPassengers the number of seats to fill
+   */
+  public void fillSeats(int numPassengers) throws FullyBookedException { 
+    if ((numSeats - numPassengers) >= 0) { 
+    	numSeats -= numPassengers;
+    }
+    else { 
+    	throw new FullyBookedException();
+    }
+  }
 
   @Override
   public String toString() {
@@ -165,6 +200,20 @@ public class Flight {
     return String.format("%s;%s;%s;%s;%s;%s;%s", this.getFlightNumber(), departureDateTime,
         arrivalDateTime, this.getAirline(), this.getOrigin(),
         this.getDestination(), String.format("%.2f", this.getCost()));
+
+  }
+
+  /**
+   * ToString of this class without the cost.
+   * @return string representation without cost.
+   */
+  public String toStringWithoutCost() {
+    DateFormat converter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+    String departureDateTime = converter.format(this.getDepartureDateTime());
+    String arrivalDateTime = converter.format(this.getArrivalDateTime());
+    return String.format("%s;%s;%s;%s;%s;%s", this.getFlightNumber(), departureDateTime,
+        arrivalDateTime, this.getAirline(), this.getOrigin(),
+        this.getDestination()); 
 
   }
 

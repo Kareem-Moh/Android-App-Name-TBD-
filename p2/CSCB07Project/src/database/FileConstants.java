@@ -13,7 +13,9 @@ public class FileConstants {
   /** Path to the csv file where flight information is stored.*/
   public static final String DEFAULT_FLIGHT_PATH = 
       "/home/wiliam/granad16/team_0600/p2/CSCB07Project/src/sampletests/flights1.txt";
-
+  /** Path to the default users file.*/
+  public static final String DEFAULT_USER_PATH = 
+      "/home/wiliam/granad16/team_0600/p2/CSCB07Project/src/sampletests/clients.txt";
   /** Index of the flight number in a flight entry.*/
   public static final int FLIGHT_NUMBER = 0;
   /** Index of the departure date time in a flight entry.*/
@@ -28,6 +30,9 @@ public class FileConstants {
   public static final int DESTINATION = 5;
   /** Index of the price in a flight entry.*/
   public static final int COST = 6;
+  //New from phase 3
+  /** Index of the number of seats.*/
+  public static final int NUM_SEATS = 7;
   
   /** Index of the last name in a user entry.*/
   public static final int LAST_NAME = 0;

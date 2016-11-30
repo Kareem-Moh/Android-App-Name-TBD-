@@ -9,32 +9,22 @@ package user;
 public abstract class Account {
 
   protected String email;
-  private String billingAddress;
   private String firstName;
   private String lastName;
 
   /**
    * Constructor.
    * @param email the email
-   * @param billingAddress the billing address
    * @param firstName the first name
    * @param lastName the last name
    */
-  public Account(String lastName, String firstName, String email, String billingAddress) {
+  public Account(String lastName, String firstName, String email) {
     super();
     this.email = email;
-    this.billingAddress = billingAddress;
     this.firstName = firstName;
     this.lastName = lastName;
   }
 
-  /**
-   * set billing address.
-   * @param billingAddress the billingAddress to set
-   */
-  public void setBillingAddress(String billingAddress) {
-    this.billingAddress = billingAddress;
-  }
 
   /**
    * get first name.
@@ -44,15 +34,7 @@ public abstract class Account {
     return firstName;
   }
 
-  /**
-   * get billing address.
-   * 
-   * @return the billingAddress.
-   */
-  public String getBillingAddress() {
-    return billingAddress;
-  }
-  
+
   /**
    * set first name.
    * 
@@ -64,6 +46,7 @@ public abstract class Account {
 
   /**
    * get last name.
+   * 
    * @return the lastName
    */
   public String getLastName() {
@@ -72,6 +55,7 @@ public abstract class Account {
 
   /**
    * set last name.
+   * 
    * @param lastName the lastName to set
    */
   public void setLastName(String lastName) {
@@ -81,20 +65,29 @@ public abstract class Account {
 
   /**
    * get email.
+   * 
    * @return the email
    */
   public String getEmail() {
     return email;
   }
+  
+  /**
+   * note that this should only be accessed by an admin.
+   * @param email new email
+   */
+  public void setEmail(String email) {
+    this.email = email;
+  }
 
   /**
    * Update all the information you're allowed to update all at once.
+   * 
    * @param billingAddress.
    * @param firstName.
    * @param lastName.
    */
-  public void updateInformation(String billingAddress, String firstName, String lastName) {
-    this.setBillingAddress(billingAddress);
+  public void updateInformation(String firstName, String lastName) {
     this.setFirstName(firstName);
     this.setLastName(lastName);
   }
@@ -108,7 +101,6 @@ public abstract class Account {
   public int hashCode() {
     final int prime = 31;
     int result = 1;
-    result = prime * result + ((billingAddress == null) ? 0 : billingAddress.hashCode());
     result = prime * result + ((email == null) ? 0 : email.hashCode());
     result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
     result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());

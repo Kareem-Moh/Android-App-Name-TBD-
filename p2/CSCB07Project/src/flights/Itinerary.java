@@ -1,24 +1,36 @@
 package flights;
 
-import java.sql.Time;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
- * A class to represent the Itinerary class.
+ * This is class keeps track of all the flights required to get from one destination to another,
+ * while also keeping track of the incurred cost and travel time.
  * 
- * @author Lian
+ * @author William Granados, Kareem Mohamed, Liam Pakingan
+ * @see Flight
  */
 public class Itinerary {
 
-
-
+  /** Container where we will keep track of all our flights. */
   private ArrayList<Flight> flights;
+  /** Accumulated cost for each flight in our @link{flights}; rounded to two decimal places. */
   private double totalCost;
-  private Time totalFlightTime;
+  /** Accumulated time to get from our starting departure location to our arrival destination. */
+  private Duration totalFlightTime;
+
 
   /**
-   * this function make a new Itinerary
+   * Generic constructor called when we don't have any flights to add.
+   */
+  public Itinerary() {
+    this.flights = new ArrayList<Flight>();
+    this.totalCost = 0;
+  }
+
+  /**
+   * Generic constructor called when we do have flights to be added to our itinerary.
    * 
    * @param flights is the list of flights in the Itinerary.
    */
@@ -27,7 +39,7 @@ public class Itinerary {
   }
 
   /**
-   * returns the ArrayList of Flight.
+   * Returns the ArrayList of Flight in this Itinerary.
    * 
    * @return the ArrayList of Flight.
    */
@@ -36,28 +48,29 @@ public class Itinerary {
   }
 
   /**
-   * This function set the Array List of flights to the param.
+   * Sets the ArrayList of of flights in our class and also updates totalCost and totalTime.
    * 
    * @param flights is array list of flights
    */
   public void setFlights(ArrayList<Flight> flights) {
     this.flights = flights;
+    this.updateTotalCost();
+    this.updateTotalTime();
   }
 
   /**
-   * This function will add the flight into a ArrayList of Flight. after adding the flight totalCost
-   * and totalFlightTime will be updated
+   * Appends this flight to the the end of our current flight list.
    * 
-   * @param flights is the flight that you add to ArrayList of Flight
+   * @param flight is the flight that you add to ArrayList of Flight
    */
-  public void addFlight(Flight flights) {
-    this.flights.add(flights);
-    updateTotalCost();
-    updateTotalTime();
+  public void addFlight(Flight flight) {
+    this.flights.add(flight);
+    this.updateTotalCost();
+    this.updateTotalTime();
   }
 
   /**
-   * returns the totalCost.
+   * Returns the accumulated cost for each flight in our {@link flights}.
    * 
    * @return the totalCost.
    */
@@ -66,81 +79,123 @@ public class Itinerary {
   }
 
   /**
-   * returns the totalFlightTime.
+   * Returns the accumulated travel time for each flight in our {@link flights}.
    * 
    * @return the totalFlightTime.
    */
-  public Time getTotalTravelTime() {
+  public Duration getTotalTravelTime() {
     return totalFlightTime;
   }
 
-
   /**
-   * this function will update the total cost of the Itinerary.
+   * Updates the total cost based on the flights in our {@link flights}.
    */
   private void updateTotalCost() {
-
-    double costOfTotal = 0;
-
-    /* for each flight */
-    for (int index = 0; index < flights.size(); index = index + 1) {
-      /* getting indexed flight */
-      Flight indexedFlight = flights.get(index);
-      /* adding the cost the flight to sumOfCost of */
-      costOfTotal = costOfTotal + indexedFlight.getCost();
+    double totalCost = 0.0;
+    for (int index = 0; index < this.flights.size(); index++) {
+      totalCost += flights.get(index).getCost();
     }
-    totalCost = costOfTotal;
+    this.totalCost = totalCost;
   }
 
   /**
-   * this function will update the total time of the Itinerary.
+   * Updates the total travel time based on the flights in our {@link flights}.
    */
   private void updateTotalTime() {
-
-    /* getting first airplane's DateTime for departure */
-    Flight firstFlight = flights.get(1);
-    Date startingDateTime = firstFlight.getDepartureDateTime();
-
-    /* getting last airplane's DateTime for arrival */
-    Flight lastFlight = flights.get(flights.size() - 1);
-    Date endingDateTime = lastFlight.getArrivalDateTime();
-
-    /* this means time difference between startingDate and endingDate */
-    long dateTimeDiff = startingDateTime.getTime() - endingDateTime.getTime();
-    totalFlightTime.setTime(dateTimeDiff);
-
+    Instant startingDateTime = this.flights.get(0).getDepartureDateTime().toInstant();
+    Instant endingDateTime =
+        this.flights.get(this.flights.size() - 1).getArrivalDateTime().toInstant();
+    this.totalFlightTime = Duration.between(startingDateTime, endingDateTime);
   }
 
   /**
-   * returns the Origin city of the Itinerary.
+   * Returns the first flight in our {@link flights}.
    * 
-   * @return the Origin city of the Itinerary
+   * @return last flight
+   */
+  public Flight getFirstFlight() {
+    return this.flights.get(0);
+  }
+
+  /**
+   * Returns the last flight in our {@link flights}.
+   * 
+   * @return last flight
+   */
+  public Flight getLastFlight() {
+    return this.flights.get(this.flights.size() - 1);
+  }
+
+  /**
+   * Returns the first city in our itinerary; coined the "origin".
+   * 
+   * @return the origin city for our Itinerary
    */
   public String getOrigin() {
     return this.flights.get(0).getOrigin();
   }
 
   /**
-   * returns the Destination city of the Itinerary.
+   * Returns the last city in our itinerary; coined the "destination".
    * 
-   * @return the Destination city of the Itinerary.
+   * @return the destination city for our Itinerary.
    */
   public String getDestination() {
     return this.flights.get(this.flights.size() - 1).getDestination();
   }
 
-  /* (non-Javadoc)
-  * @see java.lang.Object#toString()
-  */
   @Override
   public String toString() {
-    String retString = null;
-    for (Flight currFlight: flights) { 
-      retString += (currFlight + "\n");
+    String ret = "";
+    for (Flight flight : this.flights) {
+      ret += String.format("%s\n", flight.toStringWithoutCost());
     }
-    retString += (this.getTotalCost()
-        + "\n" + this.getTotalTravelTime() + "\n");
-    return retString;
+    ret += String.format("%.2f\n", this.getTotalCost());
+    ret += String.format("%.2f", (double) this.getTotalTravelTime().getSeconds() / 60.0 / 60.0);
+    return ret;
   }
 
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((flights == null) ? 0 : flights.hashCode());
+    long temp;
+    temp = Double.doubleToLongBits(totalCost);
+    result = prime * result + (int) (temp ^ (temp >>> 32));
+    result = prime * result + ((totalFlightTime == null) ? 0 : totalFlightTime.hashCode());
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null) {
+      return false;
+    }
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
+    Itinerary other = (Itinerary) obj;
+    if (flights == null) {
+      if (other.flights != null) {
+        return false;
+      }
+    } else if (!flights.equals(other.flights)) {
+      return false;
+    }
+    if (Double.doubleToLongBits(totalCost) != Double.doubleToLongBits(other.totalCost)) {
+      return false;
+    }
+    if (totalFlightTime == null) {
+      if (other.totalFlightTime != null) {
+        return false;
+      }
+    } else if (!totalFlightTime.equals(other.totalFlightTime)) {
+      return false;
+    }
+    return true;
+  }
 }
